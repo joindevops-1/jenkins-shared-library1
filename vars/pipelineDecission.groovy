@@ -5,7 +5,7 @@ def decidePipeline(Map configMap) {
     type = configMap.get("type")
     switch(type) {
         case "nodejsEKS":
-            nodejsEKS(configMap)
+            nodeJSEKS(configMap)
             break
         case "nodejsVM":
             nodejsVM(configMap)
