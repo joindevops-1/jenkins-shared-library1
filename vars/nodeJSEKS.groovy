@@ -102,7 +102,7 @@ def call(Map configMap){
                 steps{
                     withAWS(credentials: 'aws-creds', region: 'us-east-1') {
                         script{               
-                            build job: '../../backend-deploy', parameters: [
+                            build job: '../backend-deploy', parameters: [
                                 string(name: 'ENVIRONMENT', value: "dev"),
                                 string(name: 'VERSION', value: "$appVersion")
                             ], wait: true
