@@ -62,25 +62,25 @@ def call(Map configMap){
                     }
                 } */
             }
-            // stage('Sonar Scan'){
-            //     environment {
-            //         scannerHome = tool 'sonar' //referring scanner CLI
-            //     }
-            //     steps {
-            //         script {
-            //             withSonarQubeEnv('sonar') { //referring sonar server
-            //                 sh "${scannerHome}/bin/sonar-scanner"
-            //             }
-            //         }
-            //     }
-            // }
-            // stage("Quality Gate") {
-            //     steps {
-            //       timeout(time: 30, unit: 'MINUTES') {
-            //         waitForQualityGate abortPipeline: true
-            //       }
-            //     }
-            // } 
+            stage('Sonar Scan'){
+                environment {
+                    scannerHome = tool 'sonar' //referring scanner CLI
+                }
+                steps {
+                    script {
+                        withSonarQubeEnv('sonar') { //referring sonar server
+                            sh "${scannerHome}/bin/sonar-scanner"
+                        }
+                    }
+                }
+            }
+            stage("Quality Gate") {
+                steps {
+                  timeout(time: 30, unit: 'MINUTES') {
+                    waitForQualityGate abortPipeline: true
+                  }
+                }
+            } 
             stage('Docker build'){
                 
                 steps{
