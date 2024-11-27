@@ -104,7 +104,10 @@ def call(Map configMap){
                         script{               
                             build job: '../backend-deploy', parameters: [
                                 string(name: 'ENVIRONMENT', value: "dev"),
-                                string(name: 'VERSION', value: "$appVersion")
+                                string(name: 'VERSION', value: "$appVersion"),
+                                string(name: 'project', value: "$project"),
+                                string(name: 'component', value: "$component"),
+                                string(name: 'ENVIRONMENT', value: "dev")
                             ], wait: true
                         }
                     }
