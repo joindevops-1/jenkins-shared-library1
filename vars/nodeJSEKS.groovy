@@ -62,7 +62,7 @@ def call(Map configMap){
                     }
                 } */
             }
-            stage('Sonar Scan'){
+            /* stage('Sonar Scan'){
                 environment {
                     scannerHome = tool 'sonar' //referring scanner CLI
                 }
@@ -80,7 +80,7 @@ def call(Map configMap){
                     waitForQualityGate abortPipeline: true
                   }
                 }
-            } 
+            } */ 
             stage('Docker build'){
                 
                 steps{
