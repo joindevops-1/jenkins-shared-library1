@@ -84,7 +84,7 @@ def call(Map configMap){
             stage('Docker build'){
                 
                 steps{
-                    withAWS(credentials: 'aws-creds', region: 'us-east-1') {
+                    withAWS(credentials: "aws-creds-${environment}", region: 'us-east-1') {
                         sh """
                             aws ecr get-login-password --region ${region} | docker login --username AWS --password-stdin ${account_id}.dkr.ecr.${region}.amazonaws.com
 
@@ -100,7 +100,7 @@ def call(Map configMap){
                     expression { params.DEPLOY }
                 }
                 steps{
-                    withAWS(credentials: 'aws-creds', region: 'us-east-1') {
+                    withAWS(credentials: "aws-creds-${environment}", region: 'us-east-1') {
                         script{               
                             build job: '../backend-deploy', parameters: [
                                 string(name: 'ENVIRONMENT', value: "dev"),
